@@ -1,0 +1,66 @@
+{
+	"name": "Sociable test live coding environment",
+	"dockerFile": "Dockerfile",
+	"forwardPorts": [9999],
+	"workspaceFolder": "/app",
+	"mounts": [
+		"source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached",
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"junstyle.php-cs-fixer",
+				"bmewburn.vscode-intelephense-client",
+				"mehedidracula.php-namespace-resolver",
+				"ms-azuretools.vscode-docker",
+				"ms-vscode-remote.remote-containers",
+				"DEVSENSE.composer-php-vscode",
+				"MehediDracula.php-constructor",
+				"xdebug.php-debug",
+				"neilbrayfield.php-docblocker",
+        		"MehediDracula.php-namespace-resolver",
+				"SanderRonde.phpstan-vscode",
+				"marabesi.php-import-checker",
+        		"coozieki.php-implementor",
+        		"marsl.vscode-php-refactoring",
+				"st-pham.php-refactor-tool",
+        		"pkboom.php-create-method",
+				"jaguadoromero.vscode-php-create-class",
+				"st-pham.php-refactor-tool",
+        		"robertgr991.php-parameter-hint",
+				"funkyproject.vscode-phpunit-funky-fork",
+				"Codecov.codecov"
+			],
+			"settings": {
+				"php-cs-fixer.executablePath": "/app/vendor/bin/php-cs-fixer",
+				"php-cs-fixer.onsave": true,
+				"php-cs-fixer.allowRisky": true,
+				"php-cs-fixer.ignorePHPVersion": true,
+        		"php-cs-fixer.pathMode": "intersection",
+				"phpunit-test-workbench.phpunitPath": "/app/vendor/bin/phpunit",
+        		"phpstan.binCommand": [
+          			"/app/vendor/bin/phpstan"
+        		],
+        		"phpstan.showTypeOnHover": true,
+				"intelephense.languageClient.php.executablePath": "/usr/local/bin/php",
+        		"intelephense.telemetry.enabled": false,
+        		"intelephense.licenceKey": "${localEnv:INTELEPHENSE_LICENCE}",
+				"intelephense.environment.includePaths": [
+          			"vendor"
+        		],
+				"phpunit.configurationPath": "/app/phpunit.xml",
+				"phpunit.testExplorer.folderPattern": "/app/tests/**/*Test.php",
+				"phpunit.debuggerConfig": "Listen for Xdebug",
+				"phpunit.xdebugPort": 9003
+			}
+
+		}
+	},
+	"remoteEnv": {
+		"XDEBUG_MODE": "coverage,develop,debug"
+	},
+	"remoteUser": "dev",
+	"features": {
+		"ghcr.io/itsmechlark/features/1password:1": {}
+	}
+}
